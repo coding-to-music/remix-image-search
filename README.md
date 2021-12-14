@@ -4,6 +4,11 @@ This is an example of building a search input with Remix.
 
 - [Remix Docs](https://remix.run/docs)
 
+Original Example read from this API
+https://www.tvmaze.com/api#rate-limiting
+
+
+
 ## Development
 
 From your terminal:
