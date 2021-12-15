@@ -15,7 +15,7 @@ export const links: LinksFunction = () => {
 
 type MemeResult = {
   id: string;
-  meme: { name: string; url: string; image?: { medium: string } };
+  show: { name: string; url: string; image?: { medium: string } };
 };
 
 type LoaderData = {
@@ -44,7 +44,7 @@ export const loader: LoaderFunction = async ({ request }) => {
   }
 
   const result = await fetch(
-    `https://api.tvmaze.com/search/memes?q=${searchTerm}`
+    `https://api.tvmaze.com/search/shows?q=${searchTerm}`
   );
   const memeResults = (await result.json()) as undefined | Array<MemeResult>;
 
@@ -62,12 +62,12 @@ export const loader: LoaderFunction = async ({ request }) => {
     searchTerm,
     items: memeResults
       .map(item =>
-        item.meme.image
+        item.show.image
           ? {
               id: item.id,
-              name: item.meme.name,
-              image: item.meme.image.medium,
-              url: item.meme.url
+              name: item.show.name,
+              image: item.show.image.medium,
+              url: item.show.url
             }
           : null
       )
